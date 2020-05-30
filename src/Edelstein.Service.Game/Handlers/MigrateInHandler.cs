@@ -1,8 +1,7 @@
 using System.Threading.Tasks;
 using Edelstein.Core.Gameplay.Social.Memo;
-using Edelstein.Core.Utils;
+using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Utils.Packets;
-using Edelstein.Network.Packets;
 using Edelstein.Service.Game.Fields.Objects.User;
 using MoreLinq;
 
@@ -46,15 +45,15 @@ namespace Edelstein.Service.Game.Handlers
                 await field.Enter(fieldUser);
 
                 if (fieldUser.Memos.Count > 0)
-                    using (var p = new OutPacket(SendPacketOperations.MemoResult))
-                    {
-                        var memos = fieldUser.Memos.Values;
+                {
+                    using var p = new OutPacket(SendPacketOperations.MemoResult);
+                    var memos = fieldUser.Memos.Values;
 
-                        p.EncodeByte((byte) MemoResultType.Load);
-                        p.EncodeByte((byte) memos.Count);
-                        memos.ForEach(m => m.EncodeData(p));
-                        await fieldUser.SendPacket(p);
-                    }
+                    p.EncodeByte((byte) MemoResultType.Load);
+                    p.EncodeByte((byte) memos.Count);
+                    memos.ForEach(m => m.EncodeData(p));
+                    await fieldUser.SendPacket(p);
+                }
             }
             catch
             {

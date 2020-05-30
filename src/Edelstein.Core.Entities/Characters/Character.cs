@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using Edelstein.Database;
-using Edelstein.Database.Entities.Characters;
-using Edelstein.Entities.Inventories;
+using Edelstein.Core.Database;
+using Edelstein.Core.Entities.Inventories;
 
-namespace Edelstein.Entities.Characters
+namespace Edelstein.Core.Entities.Characters
 {
     public class Character : IDataEntity
     {

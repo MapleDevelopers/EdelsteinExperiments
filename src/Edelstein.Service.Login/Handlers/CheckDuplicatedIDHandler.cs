@@ -2,10 +2,9 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Edelstein.Core.Utils;
+using Edelstein.Core.Entities.Characters;
+using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Utils.Packets;
-using Edelstein.Entities.Characters;
-using Edelstein.Network.Packets;
 
 namespace Edelstein.Service.Login.Handlers
 {
@@ -50,7 +49,7 @@ namespace Edelstein.Service.Login.Handlers
 
                 var isDuplicatedID = store
                     .Query<Character>()
-                    .Where(c => c.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                    .Where(c => c.Name == name)
                     .ToImmutableList()
                     .Any();
 

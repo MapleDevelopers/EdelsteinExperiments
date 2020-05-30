@@ -1,7 +1,7 @@
 using System;
 using System.Drawing;
 using System.Threading.Tasks;
-using Edelstein.Network.Packets;
+using Edelstein.Core.Network.Packets;
 using Edelstein.Service.Game.Logging;
 
 namespace Edelstein.Service.Game.Fields.Objects
@@ -18,10 +18,6 @@ namespace Edelstein.Service.Game.Fields.Objects
         public IFieldSplit FieldSplit { get; set; }
 
         public Point Position { get; set; }
-
-        protected AbstractFieldObj()
-        {
-        }
 
         public async Task UpdateFieldSplit(
             Func<IPacket> getEnterPacket = null,

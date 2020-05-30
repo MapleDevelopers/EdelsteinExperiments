@@ -1,8 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Baseline;
-using Edelstein.Core.Utils;
-using Edelstein.Network.Packets;
+using Edelstein.Core.Network.Packets;
+using Edelstein.Core.Utils.Packets;
 using Edelstein.Service.Game.Conversations;
 using Edelstein.Service.Game.Fields.Objects.User;
 

@@ -1,10 +1,8 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Edelstein.Core.Distributed.States;
 using Edelstein.Core.Gameplay.Migrations.States;
-using Edelstein.Core.Utils;
+using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Utils.Packets;
-using Edelstein.Network.Packets;
 
 namespace Edelstein.Service.Trade.Handlers
 {

@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Templates.Server.Continent;
 using Edelstein.Core.Utils.Packets;
 using Edelstein.Core.Utils.Ticks;
-using Edelstein.Network.Packets;
 using Edelstein.Service.Game.Fields.Objects;
 using Edelstein.Service.Game.Logging;
 using Stateless;
@@ -81,12 +81,10 @@ namespace Edelstein.Service.Game.Fields.Continent
 
                     // TODO: Mobspawns
 
-                    using (var p = new OutPacket(SendPacketOperations.CONTIMOVE))
-                    {
-                        p.EncodeByte((byte) ContinentTarget.TargetMoveField);
-                        p.EncodeByte((byte) ContinentTrigger.MobGen);
-                        await MoveField.BroadcastPacket(p);
-                    }
+                    using var p = new OutPacket(SendPacketOperations.CONTIMOVE);
+                    p.EncodeByte((byte) ContinentTarget.TargetMoveField);
+                    p.EncodeByte((byte) ContinentTrigger.MobGen);
+                    await MoveField.BroadcastPacket(p);
                 })
                 .OnExitAsync(async () =>
                 {
@@ -94,12 +92,10 @@ namespace Edelstein.Service.Game.Fields.Continent
 
                     // TODO: Mobspawns
 
-                    using (var p = new OutPacket(SendPacketOperations.CONTIMOVE))
-                    {
-                        p.EncodeByte((byte) ContinentTarget.TargetMoveField);
-                        p.EncodeByte((byte) ContinentTrigger.MobDestroy);
-                        await MoveField.BroadcastPacket(p);
-                    }
+                    using var p = new OutPacket(SendPacketOperations.CONTIMOVE);
+                    p.EncodeByte((byte) ContinentTarget.TargetMoveField);
+                    p.EncodeByte((byte) ContinentTrigger.MobDestroy);
+                    await MoveField.BroadcastPacket(p);
                 })
                 .Permit(ContinentTrigger.MobDestroy, ContinentState.Move);
 
