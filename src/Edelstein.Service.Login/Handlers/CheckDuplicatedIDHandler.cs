@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Edelstein.Core.Database.LiteDB;
 using Edelstein.Core.Entities.Characters;
 using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Utils.Packets;
@@ -47,11 +48,18 @@ namespace Edelstein.Service.Login.Handlers
                 using var p = new OutPacket(SendPacketOperations.CheckDuplicatedIDResult);
                 using var store = adapter.Service.DataStore.StartSession();
 
-                var isDuplicatedID = store
-                    .Query<Character>()
-                    .Where(c => c.Name == name)
-                    .ToImmutableList()
-                    .Any();
+                // TODO: better solution for LiteDB
+                var isDuplicatedID = store is LiteDBDataStore
+                    ? store
+                        .Query<Character>()
+                        .Where(c => c.Name == name)
+                        .ToImmutableList()
+                        .Any()
+                    : store
+                        .Query<Character>()
+                        .Where(c => c.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                        .ToImmutableList()
+                        .Any();
 
                 p.EncodeString(name);
                 p.EncodeBool(isDuplicatedID);
