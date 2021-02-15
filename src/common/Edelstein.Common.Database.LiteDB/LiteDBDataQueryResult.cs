@@ -3,7 +3,7 @@ using System.Collections.Immutable;
 using Edelstein.Protocol.Database;
 using LiteDB;
 
-namespace Edelstein.Protocol.Database.LiteDB
+namespace Edelstein.Common.Database.LiteDB
 {
     public class LiteDBDataQueryResult<T> : IDataQueryResult<T>
         where T : class, IDataEntity

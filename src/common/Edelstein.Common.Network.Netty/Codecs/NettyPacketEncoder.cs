@@ -1,10 +1,12 @@
 ﻿using DotNetty.Buffers;
 using DotNetty.Codecs;
 using DotNetty.Transport.Channels;
+using Edelstein.Common.Network.Netty.Transport;
+using Edelstein.Protocol.Network;
 using Edelstein.Protocol.Network.Ciphers;
 using Edelstein.Protocol.Network.Transport;
 
-namespace Edelstein.Protocol.Network.Codecs
+namespace Edelstein.Common.Network.Codecs
 {
     public class NettyPacketEncoder : MessageToByteEncoder<IPacket>
     {

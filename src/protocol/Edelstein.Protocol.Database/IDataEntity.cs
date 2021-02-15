@@ -1,7 +1,7 @@
 namespace Edelstein.Protocol.Database
 {
-    public interface IDataEntity
+    public interface IDataEntity : IRepositoryEntry<int>
     {
-        int ID { get; set; }
+        new int ID { get; set; }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using System;
 using DotNetty.Handlers.Timeout;
 using DotNetty.Transport.Channels;
-using Edelstein.Protocol.Network.Netty.Logging;
+using Edelstein.Common.Network.Netty.Logging;
+using Edelstein.Protocol.Network;
+using Edelstein.Protocol.Network.Transport;
 
-namespace Edelstein.Protocol.Network.Transport
+namespace Edelstein.Common.Network.Netty.Transport
 {
     public class NettyServerHandler : ChannelHandlerAdapter
     {

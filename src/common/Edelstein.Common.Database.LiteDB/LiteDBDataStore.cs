@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using Edelstein.Protocol.Database;
 using LiteDB;
 
-namespace Edelstein.Protocol.Database.LiteDB
+namespace Edelstein.Common.Database.LiteDB
 {
     public class LiteDBDataStore : IDataStore
     {

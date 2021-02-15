@@ -3,11 +3,13 @@ using System.Threading.Tasks;
 using DotNetty.Transport.Bootstrapping;
 using DotNetty.Transport.Channels;
 using DotNetty.Transport.Channels.Sockets;
-using Edelstein.Protocol.Network.Netty.Logging;
+using Edelstein.Common.Network.Codecs;
+using Edelstein.Common.Network.Netty.Logging;
+using Edelstein.Protocol.Network;
 using Edelstein.Protocol.Network.Ciphers;
-using Edelstein.Protocol.Network.Codecs;
+using Edelstein.Protocol.Network.Transport;
 
-namespace Edelstein.Protocol.Network.Transport
+namespace Edelstein.Common.Network.Netty.Transport
 {
     public class NettyTransportClient : ITransportClient
     {

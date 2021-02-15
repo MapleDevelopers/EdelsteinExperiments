@@ -1,4 +1,4 @@
-﻿namespace Edelstein.Protocol.Network.Codecs
+﻿namespace Edelstein.Common.Network.Codecs
 {
     public enum NettyPacketState
     {

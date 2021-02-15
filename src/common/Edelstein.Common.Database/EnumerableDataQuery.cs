@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using Edelstein.Protocol.Database;
 
-namespace Edelstein.Protocol.Database
+namespace Edelstein.Common.Database
 {
     public class EnumerableDataQuery<T> : IDataQuery<T>
         where T : class, IDataEntity

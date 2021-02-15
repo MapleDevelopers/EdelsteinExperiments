@@ -5,9 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Templating\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Edelstein.Protocol\Edelstein.Protocol.csproj" />
   </ItemGroup>
 </Project>

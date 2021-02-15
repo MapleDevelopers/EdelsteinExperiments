@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using Edelstein.Protocol.Database;
 using LiteDB;
 
-namespace Edelstein.Protocol.Database.LiteDB
+namespace Edelstein.Common.Database.LiteDB
 {
     public class LiteDBDataQuery<T> : IDataQuery<T>
         where T : class, IDataEntity

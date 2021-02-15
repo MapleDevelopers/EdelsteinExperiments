@@ -4,4 +4,15 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Edelstein.Protocol\Edelstein.Protocol.csproj" />
+    <ProjectReference Include="..\Edelstein.Protocol.Database\Edelstein.Protocol.Database.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\" />
+    <Folder Include="Templates\Items\" />
+    <Folder Include="Templates\Fields\" />
+    <Folder Include="Entities\" />
+    <Folder Include="Entities\Characters\" />
+  </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Edelstein.Protocol.Database;
 
-namespace Edelstein.Protocol.Database
+namespace Edelstein.Common.Database
 {
     public class QueuedDataBatch : IDataBatch
     {
