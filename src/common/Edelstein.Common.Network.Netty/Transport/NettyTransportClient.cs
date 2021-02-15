@@ -60,12 +60,14 @@ namespace Edelstein.Common.Network.Netty.Transport
             Logger.Info($"Established connection to {host}:{port}");
         }
 
-        public Task SendPacket(IPacket packet)
-            => Handler.SendPacket(packet);
+        public async Task SendPacket(IPacket packet) {
+            if (Handler != null)
+                await Handler.SendPacket(packet);
+        }
 
         public async Task Close()
         {
-            await Handler.Socket.Close();
+            if (Handler != null) await Handler.Socket.Close();
             if (Channel != null) await Channel.CloseAsync();
             if (WorkerGroup != null) await WorkerGroup.ShutdownGracefullyAsync();
         }
