@@ -1,0 +1,86 @@
+﻿syntax = "proto3";
+
+import "Protos/v1/common.proto";
+
+package edelstein.protocol.interop.v1;
+
+service SessionService {
+    rpc UpdateSession(UpdateSessionRequest) returns (UpdateSessionResponse);
+    rpc DescribeSessionByCharacter(DescribeSessionByCharacterRequest) returns (DescribeSessionResponse);
+    rpc DescribeSessionByAccount(DescribeSessionByCharacterRequest) returns (DescribeSessionResponse);
+
+    rpc RegisterMigration(RegisterMigrationRequest) returns (RegisterMigrationResponse);
+    rpc ClaimMigration(ClaimMigrationRequest) returns (ClaimMigrationResponse);
+}
+
+enum SessionStatus {
+    OFFLINE = 0;
+    LOGGING_IN = 1;
+    LOGGED_IN = 2;
+    MIGRATING = 3;
+}
+
+message UpdateSessionRequest {
+    int32 accountID = 1;
+    int32 characterID = 2;
+
+    string serverID = 3;
+    SessionStatus status = 4;
+}
+
+message UpdateSessionResponse {
+    enum UpdateSessionStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    UpdateSessionStatus status = 1;
+}
+
+message DescribeSessionByCharacterRequest {
+    int32 characterID = 1;
+}
+
+message DescribeSessionByAccountRequest {
+    int32 accountID = 1;
+}
+
+message DescribeSessionResponse {
+    int32 accountID = 1;
+    int32 characterID = 2;
+
+    ServerDescription server = 3;
+    SessionStatus status = 4;
+}
+
+message RegisterMigrationRequest {
+    int32 characterID = 1;
+    int64 clientKey = 2;
+
+    string fromServerID = 3;
+    string toServerID = 4;
+}
+
+message RegisterMigrationResponse {
+    enum RegisterMigrationStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    RegisterMigrationStatus status = 1;
+}
+
+message ClaimMigrationRequest { 
+    int32 characterID = 1;
+    int64 clientKey = 2;
+    string serverID = 3;
+}
+
+message ClaimMigrationResponse {
+    enum ClaimMigrationStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    ClaimMigrationStatus status = 1;
+}

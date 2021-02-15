@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\protocol\Edelstein.Protocol.Interop\Edelstein.Protocol.Interop.csproj" />
+    <ProjectReference Include="..\..\protocol\Edelstein.Protocol.Database\Edelstein.Protocol.Database.csproj" />
+  </ItemGroup>
+</Project>

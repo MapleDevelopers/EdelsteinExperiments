@@ -1,0 +1,17 @@
+﻿syntax = "proto3";
+
+package edelstein.protocol.interop.v1;
+
+enum ServerType {
+    LOGIN = 0;
+    GAME = 1;
+    SHOP = 2;
+    TRADE = 3;
+}
+
+message ServerDescription {
+    string id = 1;
+    string gameConnectionInfo = 2;
+    string interConnectionInfo = 3;
+    ServerType type = 4;
+}

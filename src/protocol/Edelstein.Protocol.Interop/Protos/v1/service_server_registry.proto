@@ -1,0 +1,65 @@
+﻿syntax = "proto3";
+
+import "Protos/v1/common.proto";
+
+package edelstein.protocol.interop.v1;
+
+service ServerRegistryService {
+    rpc RegisterServer(ServerRegistrationRequest) returns (ServerRegistrationResponse);
+    rpc DeregisterServer(ServerRegistrationRequest) returns (ServerRegistrationResponse);
+    rpc UpdateServer(ServerUpdateRequest) returns (ServerUpdateResponse);
+    rpc DescribeServers(ServerDescriptionRequest) returns (ServerDescriptionResponse);
+}
+
+message ServerRegistrationRequest {
+    string id = 1;
+    string gameConnectionInfo = 2;
+    string interConnectionInfo = 3;
+    ServerType type = 4;
+}
+
+message ServerRegistrationResponse {
+    enum ServerRegistrationStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    ServerRegistrationStatus status = 1;
+    string token = 2;
+}
+
+message ServerDeregistrationRequest {
+    string id = 1;
+    string token = 2;
+}
+
+message ServerDeregistrationResponse {
+    enum ServerDeregistrationStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    ServerDeregistrationResponse status = 1;
+}
+
+message ServerUpdateRequest {
+    string id = 1;
+    string token = 2;
+}
+
+message ServerUpdateResponse {
+    enum ServerUpdateStatus {
+        OK = 0;
+        FAILED = 1;
+    }
+
+    ServerUpdateStatus status = 1;
+}
+
+message ServerDescriptionRequest {
+    repeated ServerType type = 1;
+}
+
+message ServerDescriptionResponse {
+    repeated ServerDescription servers = 1;
+}

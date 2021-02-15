@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+    
+  <ItemGroup>
+    <Protobuf Include="Protos\v1\common.proto" />
+    <Protobuf Include="Protos\v1\service_server_registry.proto" />
+    <Protobuf Include="Protos\v1\service_session.proto" />
+  </ItemGroup>
+
+  <ItemGroup>  
+    <PackageReference Include="Google.Api.CommonProtos" Version="2.2.0" />
+    <PackageReference Include="Grpc.Core" Version="2.35.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.35.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Edelstein.Protocol\Edelstein.Protocol.csproj" />
+  </ItemGroup>
+</Project>
