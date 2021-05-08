@@ -85,11 +85,11 @@ namespace Edelstein.Service.Login.Handlers
                         p.EncodeBool(false);
                     });
 
-                    p.EncodeBool(
-                        !string.IsNullOrEmpty(adapter.Account.SPW)
-                    ); // bLoginOpt TODO: proper bLoginOpt stuff
-                    p.EncodeInt(accountWorld.SlotCount);
-                    p.EncodeInt(0);
+                    //p.EncodeBool(!string.IsNullOrEmpty(adapter.Account.SPW)); // bLoginOpt TODO: proper bLoginOpt stuff
+                    //2,3 select character
+                    p.EncodeByte(0); //0 register pic, 1 require pic
+                    p.EncodeInt(accountWorld.SlotCount); // m_nSlotCount
+                    p.EncodeInt(0); // m_nBuyCharCount
                 }
 
                 await adapter.SendPacket(p);

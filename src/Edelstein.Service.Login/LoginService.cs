@@ -55,6 +55,7 @@ namespace Edelstein.Service.Login
             Handlers[RecvPacketOperations.SelectWorld] = new SelectWorldHandler();
             Handlers[RecvPacketOperations.CheckUserLimit] = new CheckUserLimitHandler();
             Handlers[RecvPacketOperations.SetGender] = new SetGenderHandler();
+            Handlers[RecvPacketOperations.CheckPinCode] = new CheckPinCodeHandler();
             Handlers[RecvPacketOperations.WorldRequest] = new WorldRequestHandler();
             Handlers[RecvPacketOperations.CheckDuplicatedID] = new CheckDuplicatedIDHandler();
             Handlers[RecvPacketOperations.CreateNewCharacter] = new CreateNewCharacterHandler();

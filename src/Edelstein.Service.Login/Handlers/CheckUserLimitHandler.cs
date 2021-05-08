@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Edelstein.Core.Gameplay.Migrations.States;
 using Edelstein.Core.Network.Packets;
 using Edelstein.Core.Utils.Packets;
+using Edelstein.Service.Login.Types;
 
 namespace Edelstein.Service.Login.Handlers
 {
@@ -45,8 +46,23 @@ namespace Edelstein.Service.Login.Handlers
 
             using var p = new OutPacket(SendPacketOperations.CheckUserLimitResult);
 
-            p.EncodeByte((byte) (capacity >= 1 ? 2 : capacity >= 0.75 ? 1 : 0));
-            p.EncodeByte(0); // TODO: bPopulateLevel
+            var capacityState = capacity switch
+            {
+                1 when capacity >= 1 => WorldCapacityState.Full,
+                0.75 when capacity >= 0.75 => WorldCapacityState.OverPopulated,
+                _ => WorldCapacityState.Normal
+            };
+
+            p.EncodeByte((byte)capacityState);
+
+            var populationLevel = capacity switch
+            {
+                0.75 when capacity >= 0.75 => WorldPopulationLevel.OverPopulated,
+                0.5 when capacity >= 0.5 => WorldPopulationLevel.HighlyPopulated,
+                _ => WorldPopulationLevel.Normal
+            };
+
+            p.EncodeByte((byte)populationLevel);
 
             await adapter.SendPacket(p);
         }

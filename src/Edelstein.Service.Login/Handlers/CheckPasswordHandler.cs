@@ -87,14 +87,20 @@ namespace Edelstein.Service.Login.Handlers
                         result = LoginResultCode.IncorrectPassword;
                 }
 
-                p.EncodeByte((byte) result);
-                p.EncodeByte(0);
-                p.EncodeInt(0);
+                p.EncodeByte((byte)result); //nRet
+                p.EncodeByte(0); //nRegStatID
+                p.EncodeInt(0);  //nUseDay
+
+                if (result == LoginResultCode.Blocked || result == LoginResultCode.TempBlocked)
+                {
+                    p.EncodeByte((byte)BlockReasons.Harassment); //nBlockReason
+                    p.EncodeDateTime(DateTime.Now); //dtUnblockDate
+                }
 
                 if (result == LoginResultCode.Success)
                 {
-                    p.EncodeInt(account.ID); // pBlockReason
-                    p.EncodeByte(account.Gender ?? (byte) 0xA);
+                    p.EncodeInt(account.ID); // dwAccountId
+                    p.EncodeByte(account.Gender ?? (byte)0xA); // nGender
                     p.EncodeByte(0); // nGradeCode
                     p.EncodeShort(0); // nSubGradeCode
                     p.EncodeByte(0); // nCountryID
@@ -104,7 +110,7 @@ namespace Edelstein.Service.Login.Handlers
                     p.EncodeLong(0); // dtChatUnblockDate
                     p.EncodeLong(0); // dtRegisterDate
                     p.EncodeInt(4); // nNumOfCharacter
-                    p.EncodeByte(1); // v44
+                    p.EncodeByte(1); // CP_WorldRequest or nGameStartMode -> CP_CheckPinCode 
                     p.EncodeByte(0); // sMsg
 
                     p.EncodeLong(adapter.ClientKey);
