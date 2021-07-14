@@ -1,6 +1,6 @@
 ﻿namespace Edelstein.Service.Login.Types
 {
-    public enum BlockReasons
+    public enum BlockReason
     {
         NoReason = 0x0,
         Hacking = 0x1,

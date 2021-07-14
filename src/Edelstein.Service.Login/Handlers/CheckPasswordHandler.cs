@@ -93,7 +93,7 @@ namespace Edelstein.Service.Login.Handlers
 
                 if (result == LoginResultCode.Blocked || result == LoginResultCode.TempBlocked)
                 {
-                    p.EncodeByte((byte)BlockReasons.Harassment); //nBlockReason
+                    p.EncodeByte((byte)BlockReason.Harassment); //nBlockReason
                     p.EncodeDateTime(DateTime.Now); //dtUnblockDate
                 }
 
