@@ -2,7 +2,6 @@ namespace Edelstein.Service.Login.Types
 {
     public enum LoginResultCode : byte
     {
-        ProcFail = byte.MaxValue,
         Success = 0x0,
         TempBlocked = 0x1,
         Blocked = 0x2,
@@ -24,14 +23,16 @@ namespace Edelstein.Service.Login.Types
         InvalidBirthDate = 0x12, // CheckPassResult: does nothing, DeleteCharResult: ??
         PassportSuspended = 0x13, // CheckPassResult: does nothing, DeleteCharResult: ??
         IncorrectSSN2 = 0x14, // CheckPassResult: does nothing, DeleteCharResult: ??
+        IncorrectSPW = 0x14, //
         WebAuthNeeded = 0x15, // CheckPassResult: Please verify your account via email in order to play the game.
         DeleteCharacterFailedOnGuildMaster = 0x16, // CheckPassResult: does nothing, DeleteCharResult: ??
+        SamePasswordAndSPW = 0x16,
         NotagreedEULA = 0x17, // CheckPassResult: shows eula agreement --> Unhandled packet operation ConfirmEULA
+        SamePincodeAndSPW = 0x17, //
         DeleteCharacterFailedEngaged = 0x18, // CheckPassResult: does nothing, DeleteCharResult: ??
         RegisterLimitedIP = 0x19, // CheckPassResult: Youre logging in from outside of the service region
         RequestedCharacterTransfer = 0x1A, // CheckPassResult: does nothing, DeleteCharResult: ??
         CashUserCannotUseSimpleClient = 0x1B, // CheckPassResult: Please download the full client to experience the world of MapleStory. Would you like to download the full client from our website?
-        //0x1C CheckPassResult: does nothing, DeleteCharResult: ??
         DeleteCharacterFailedOnFamily = 0x1D, // CheckPassResult: does nothing, DeleteCharResult: ??
         InvalidCharacterName = 0x1E,  // CheckPassResult: does nothing, DeleteCharResult: ??
         IncorrectSSN = 0x1F, // CheckPassResult: does nothing, DeleteCharResult: ??
@@ -40,10 +41,6 @@ namespace Edelstein.Service.Login.Types
         WorldTooBusy = 0x22, // CheckPassResult: does nothing, DeleteCharResult: ??
         OTPReissuing = 0x23, // CheckPassResult: does nothing, DeleteCharResult: ??
         OTPInfoNotExist = 0x24, // CheckPassResult: does nothing, DeleteCharResult: ??
-
-        // Todo: more research
-        IncorrectSPW = 0x14,
-        SamePasswordAndSPW = 0x16,
-        SamePincodeAndSPW = 0x17,
+        ProcFail = byte.MaxValue
     }
 }
